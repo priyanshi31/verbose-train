@@ -1,0 +1,23 @@
+<div>
+  <h1>
+    Weather Forecast
+  </h1>
+  <div>
+    <h3>City</h3>
+    <select (change)="cityChanged()" [(ngModel)]="selectedCity">  
+      <option selected value="">Select City</option>
+      <option value="san francisco,ca">San Francisco</option> 
+      <option value="san diego,ca">San Deigo</option>
+      <option value="phoenix,az">Phoenix</option>   
+  </select> 
+  <span *ngIf="isLoading" style="padding: 1rem">Loading...</span>
+  <div style="display:flex;" *ngIf="weatherDataView.length > 0">
+    <div  *ngFor="let weatherData of weatherDataView" style="margin-bottom: 1rem; padding: 0.5rem;">
+      <div>{{weatherData.day}}</div>
+      <div>{{weatherData.date}}</div>
+      <div ><img src="/assets/icons/{{weatherData.icon}}.png" [alt]="weatherData.icon"></div>
+      <div>{{weatherData.description}}</div>
+    </div>
+  </div>
+  </div>
+</div>
